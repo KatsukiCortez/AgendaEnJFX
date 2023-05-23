@@ -22,18 +22,15 @@ public class MainApp extends Application {
         showPersonOverview();
     }
     
-    // programa iniciar root layout
+    // Programa iniciar root layout
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/vista/Rootlayout.fxml"));
+            // Cargar vista principal del archivo fxml
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/vista/VistaPrincipal.fxml"));
             AnchorPane pane = loader.load();
             //rootLayout = (BorderPane) loader.load();
             
-            
-            // no existe un controlador por el momento
-            
-            // Show the scene containing the root layout.
+            // Mostrar conteniendo a root layout
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -44,8 +41,8 @@ public class MainApp extends Application {
 
     public void showPersonOverview() {
         try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/vista/PersonOverview.fxml"));
+            // Cargar vista persona
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/vista/VistaPersona.fxml"));
             //AnchorPane personOverview = (AnchorPane) loader.load();
             AnchorPane pane = loader.load();
             
