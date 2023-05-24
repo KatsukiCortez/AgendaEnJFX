@@ -17,6 +17,28 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
+    // AGREGAR LISTA OBVERSABLE
+    private ObservableList<Persona> personData = FXCollections.observableArrayList();
+    
+    // Constructor
+    public MainApp(){
+        // Agregar algunos datos
+        personData.add(new Persona("Rocky","Balboa"));
+        personData.add(new Persona("Avril", "Lavigne")); 
+        personData.add(new Persona("Koe", "Wetzel"));
+	personData.add(new Persona("David", "Bowie"));
+	personData.add(new Persona("Peter", "Parker"));
+	personData.add(new Persona("Wanda", "Maximoff"));
+	personData.add(new Persona("Mario", "Vargas"));
+	personData.add(new Persona("Linda", "Steff"));
+	personData.add(new Persona("Lizeth", "Ortiz"));
+    }
+    
+    //Retornar los datos a la lista
+    public ObservableList<Persona> getPersonaData() {
+        return personData;
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -67,27 +89,4 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    // AGREGAR LISTA OBVERSABLE
-    private ObservableList<Persona> personaData = FXCollections.observableArrayList();
-    
-    // Constructor
-    public MainApp(){
-        // Agregar algunos datos
-        personaData.add(new Persona("Rocky","Balboa"));
-        personaData.add(new Persona("Avril", "Lavigne")); 
-        personaData.add(new Persona("Koe", "Wetzel"));
-	personaData.add(new Persona("David", "Bowie"));
-	personaData.add(new Persona("Peter", "Parker"));
-	personaData.add(new Persona("Wanda", "Maximoff"));
-	personaData.add(new Persona("Mario", "Vargas"));
-	personaData.add(new Persona("Linda", "Steff"));
-	personaData.add(new Persona("Lizeth", "Ortiz"));
-    }
-    
-    //Retornar los datos a la lista
-    public ObservableList<Persona> getPersonaData() {
-        return personaData;
-    }
-    
 }

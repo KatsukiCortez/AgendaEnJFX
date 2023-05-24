@@ -20,35 +20,56 @@ public class ControladorVistaPersona {
     @FXML
     private Label lblApellido;
     @FXML
-    private Label lblDireccionl;
+    private Label lblDireccion;
     @FXML
     private Label lblCodigoPostal;
     @FXML
     private Label lblCiudad;
     @FXML
     private Label lblCumpleanos;
-    
-    // Referencia a la aplicacion principal
+
+    // Referencia a la aplicación principal
     private MainApp mainApp;
-    
+
     // Constructor
-    public ControladorVistaPersona(){
+    public ControladorVistaPersona() {
     }
-    
-    /* Inicializar controlador, el metodo sera llamado despues de 
-    que el archivo fxml sea cargado*/
-    
+
+    /* Inicializar controlador, el método será llamado después de
+    que el archivo fxml sea cargado */
     @FXML
-    private void initilize(){
+    private void initialize() {
         nombreColumna.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         apellidoColumna.setCellValueFactory(cellData -> cellData.getValue().apellidoProperty());
+
+        // Limpia los detalles de la persona al inicio
+        showPersonDetails(null);
+
+        // Escucha los cambios de selección y muestra los detalles de la persona seleccionada
+        personaTabla.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
-    
-    public void setMainApp(MainApp mainApp){
+
+    public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        
-        // Agregar lista observable a la tabla
+
+        // Agrega la lista observable a la tabla
         personaTabla.setItems(mainApp.getPersonaData());
     }
-    
+
+    private void showPersonDetails(Persona persona) {
+        if (persona != null) {
+            lblNombre.setText(persona.getNombre());
+            lblApellido.setText(persona.getApellido());
+            lblDireccion.setText(persona.getDireccion());
+            lblCodigoPostal.setText(Integer.toString(persona.getCodigoPostal()));
+            lblCiudad.setText(persona.getCiudad());
+        } else {
+            lblNombre.setText("");
+            lblApellido.setText("");
+            lblDireccion.setText("");
+            lblCodigoPostal.setText("");
+            lblCiudad.setText("");
+        }
+    }
 }

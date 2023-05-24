@@ -1,7 +1,6 @@
 package Modelo;
 
 import java.time.LocalDate;
-import java.time.Month;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
