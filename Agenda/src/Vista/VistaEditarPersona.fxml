@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladorVistaEditarPersona">
    <children>
       <GridPane layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -31,15 +30,15 @@
             <Label text="Ciudad" GridPane.rowIndex="3" />
             <Label text="Codigo postal" GridPane.rowIndex="4" />
             <Label text="Cumpleaños" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="txtNombre" GridPane.columnIndex="1" />
+            <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtDireccion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCiudad" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtCodigoPostal" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtCumpleanos" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Button layoutX="317.0" layoutY="217.0" mnemonicParsing="false" text="Aceptar" />
-      <Button layoutX="388.0" layoutY="217.0" mnemonicParsing="false" text="Cancelar" />
+      <Button layoutX="317.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleOk" text="Aceptar" />
+      <Button layoutX="388.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" />
    </children>
 </AnchorPane>
