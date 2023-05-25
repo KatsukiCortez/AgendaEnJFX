@@ -62,8 +62,8 @@
                   </GridPane>
                   <HBox layoutX="220.0" layoutY="259.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Nuevo" />
-                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button mnemonicParsing="false" onAction="#handleNewPerson" text="Nuevo" />
+                        <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Editar" />
                         <Button mnemonicParsing="false" onAction="#handleDeletePerson" text="Eliminar" />
                      </children>
                   </HBox>

@@ -95,4 +95,34 @@ public class ControladorVistaPersona {
         }
     }
     
+    // CLICK EN BOTON NUEVA
+    @FXML
+    private void handleNewPerson() {
+        Persona tempPerson = new Persona();
+        boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+        if (okClicked) {
+            mainApp.getPersonaData().add(tempPerson);
+        }
+    }
+    
+    // CLICK EN BOTON EDITAR
+    @FXML
+    private void handleEditPerson() {
+    Persona selectedPerson = personaTabla.getSelectionModel().getSelectedItem();
+    if (selectedPerson != null) {
+        boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+        if (okClicked) {
+            showPersonDetails(selectedPerson);
+        }
+    } else {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("No Selection");
+        alert.setHeaderText("No Person Selected");
+        alert.setContentText("Please select a person in the table.");
+        alert.showAndWait();
+    }
+    }
+    
+    
 }
