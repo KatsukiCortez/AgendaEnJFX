@@ -1,6 +1,7 @@
 package Control;
 
 import Modelo.Persona;
+import Vista.ControladorVistaEditarPersona;
 import Vista.ControladorVistaPersona;
 import java.io.IOException;
 import javafx.application.Application;
@@ -10,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -43,8 +46,12 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Agenda");
-        initRootLayout();
         
+        // Agregar icono
+        this.primaryStage.getIcons().add(new Image("/imagenes/icon.png"));
+        
+        // Iniciar venatans
+        initRootLayout();
         showPersonOverview();
     }
     
@@ -82,6 +89,36 @@ public class MainApp extends Application {
         }
     }
     
+    public boolean showPersonEditDialog(Persona persona) {
+    try {
+        // Cargar archivo fxml 
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("/vista/VistaEditarPersona.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        // Crear dialogo
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Editar persona");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        // Usar el controlador
+        ControladorVistaEditarPersona controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setPersona(persona);
+
+        // Mostrar hasta que el usuario cierre la ventana
+        dialogStage.showAndWait();
+
+        return controller.isOkClicked();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+    
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -89,4 +126,5 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
