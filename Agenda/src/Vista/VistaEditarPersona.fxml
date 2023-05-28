@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="500.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladorVistaEditarPersona">
+<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="500.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladorVistaEditarPersona">
    <children>
       <GridPane layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -38,7 +38,7 @@
             <TextField fx:id="txtCumpleanos" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Button defaultButton="true" layoutX="317.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleOk" text="Aceptar" />
+      <Button defaultButton="true" layoutX="280.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleOk" text="Aceptar" />
       <Button layoutX="388.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" />
    </children>
 </AnchorPane>
