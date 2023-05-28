@@ -1,5 +1,6 @@
 package Control;
 
+import Modelo.ListaPersonas;
 import Modelo.Persona;
 import Vista.ControladorVistaEditarPersona;
 import Vista.ControladorVistaPersona;
@@ -153,4 +154,46 @@ public class MainApp extends Application {
             primaryStage.setTitle("AddressApp");
         }
     }
+    
+    public void loadPersonDataFromFile(File file) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(ListaPersonas.class);
+            Unmarshaller um = context.createUnmarshaller();
+
+            // Leer XML del archivo y desorganizar
+            ListaPersonas wrapper = (ListaPersonas) um.unmarshal(file);
+
+            personData.clear();
+            personData.addAll(wrapper.getPersonas());
+
+            // Save the file path to the registry.
+            setPersonFilePath(file);
+
+        } catch (Exception e) { // catches ANY exception
+            Dialogs.create()
+                    .title("Error")
+                    .masthead("Could not load data from file:\n" + file.getPath())
+                    .showException(e);
+        }
+    }
+    
+    public void savePersonDataToFile(File file) {
+    try {
+        JAXBContext context = JAXBContext.newInstance(ListaPersonas.class);
+        Marshaller m = context.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        // Ecanpsular los datos de la persona
+        ListaPersonas wrapper = new ListaPersonas();
+        wrapper.setPersonas(personData);
+
+        // Ordenar y guardar XML en el archivo
+        m.marshal(wrapper, file);
+
+        // Guardar el peth
+        setPersonFilePath(file);
+    } catch (Exception e) { // Capturando algunas excepciones 
+        Dialogs.create().title("Error").masthead("No se puede guardar los datos en el archivo:\n" + file.getPath()).showException(e);
+    }
+}
 }
