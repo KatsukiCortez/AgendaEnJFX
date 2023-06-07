@@ -1,6 +1,6 @@
 package Control;
 
-import Modelo.ListaPersonas;
+//import Modelo.ListaPersonas;
 import Modelo.Persona;
 import Vista.ControladorVistaEditarPersona;
 import Vista.ControladorVistaPersona;
@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 
 public class MainApp extends Application {
 
@@ -53,7 +54,7 @@ public class MainApp extends Application {
         // Agregar icono
         this.primaryStage.getIcons().add(new Image("/imagenes/icon.png"));
         
-        // Iniciar venatans
+        // Iniciar veatans
         initRootLayout();
         showPersonOverview();
     }
@@ -155,7 +156,7 @@ public class MainApp extends Application {
         }
     }
     
-    public void loadPersonDataFromFile(File file) {
+ /*   public void loadPersonDataFromFile(File file) {
         try {
             JAXBContext context = JAXBContext.newInstance(ListaPersonas.class);
             Unmarshaller um = context.createUnmarshaller();
@@ -178,22 +179,22 @@ public class MainApp extends Application {
     }
     
     public void savePersonDataToFile(File file) {
-    try {
-        JAXBContext context = JAXBContext.newInstance(ListaPersonas.class);
-        Marshaller m = context.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        try {
+            JAXBContext context = JAXBContext.newInstance(ListaPersonas.class);
+            Marshaller m = context.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-        // Ecanpsular los datos de la persona
-        ListaPersonas wrapper = new ListaPersonas();
-        wrapper.setPersonas(personData);
+            // Ecanpsular los datos de la persona
+            ListaPersonas wrapper = new ListaPersonas();
+            wrapper.setPersonas(personData);
 
-        // Ordenar y guardar XML en el archivo
-        m.marshal(wrapper, file);
+            // Ordenar y guardar XML en el archivo
+            m.marshal(wrapper, file);
 
-        // Guardar el peth
-        setPersonFilePath(file);
-    } catch (Exception e) { // Capturando algunas excepciones 
-        Dialogs.create().title("Error").masthead("No se puede guardar los datos en el archivo:\n" + file.getPath()).showException(e);
-    }
-}
+            // Guardar el peth
+            setPersonFilePath(file);
+        } catch (Exception e) { // Capturando algunas excepciones 
+            Dialogs.create().title("Error").masthead("No se puede guardar los datos en el archivo:\n" + file.getPath()).showException(e);
+        }
+    }*/
 }
